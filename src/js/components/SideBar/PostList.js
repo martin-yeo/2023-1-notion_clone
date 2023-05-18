@@ -15,7 +15,7 @@ function PostList({ $target, initialState}) {
         let str = ""
 
         for (const key in data) {
-            if( data[key].documents.length ) {
+            if(data[key].documents.length) {
                 str += 
                 `
                 <li data-id="${data[key].id}">${data[key].title}
@@ -28,6 +28,7 @@ function PostList({ $target, initialState}) {
                 str +=   `<li data-id="${data[key].id}">${data[key].title}`
             }
         }
+        return str
     }
 
     this.render = () => {
