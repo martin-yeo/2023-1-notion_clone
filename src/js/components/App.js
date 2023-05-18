@@ -1,4 +1,5 @@
-import PostPage from "./PostPage.js";
+import Editor from "./PostMain/Editor.js";
+import PostPage from "./SideBar/PostPage.js";
 
 function App({ $target }) {
     const postPage = new PostPage({
@@ -6,6 +7,8 @@ function App({ $target }) {
     })
 
     postPage.render()
+
+    new Editor({$target})
 }
 
 export default App;
