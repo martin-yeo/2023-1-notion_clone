@@ -1,7 +1,6 @@
 import PostPage from "./PostPage.js";
 
 function App({ $target }) {
-    // console.log({$target})
     const postPage = new PostPage({
         $target
     })
