@@ -2,11 +2,11 @@ import PostPage from "./PostPage.js";
 
 function App({ $target }) {
     // console.log({$target})
-    new PostPage({
+    const postPage = new PostPage({
         $target
     })
 
-    //PostPage.render()
+    postPage.render()
 }
 
 export default App;

@@ -1,8 +1,15 @@
-function PostList({ $taget }) {
+function PostList({ $target }) {
     const $postList = document.createElement("div")
 
+    $target.appendChild($postList)
+
     this.render = () => {
-        //... 구현 예정
+        $postList.innerHTML = `
+            <ul>
+                <li>1<li>
+                <li>2<li>
+            </ul>
+        `
     }
 
     this.render()
