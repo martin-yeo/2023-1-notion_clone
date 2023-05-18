@@ -1,4 +1,4 @@
-import Editor from "./PostMain/Editor.js";
+import PostEditPage from "./PostMain/PostEditPage.js";
 import PostPage from "./SideBar/PostPage.js";
 
 function App({ $target }) {
@@ -8,7 +8,12 @@ function App({ $target }) {
 
     postPage.render()
 
-    new Editor({$target})
+    const postEditPage = new PostEditPage({ 
+        $target,
+        initialState: {}
+     })
+     
+     postEditPage.render()
 }
 
 export default App;
