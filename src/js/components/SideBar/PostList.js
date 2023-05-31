@@ -40,7 +40,7 @@ function PostList({ $target, initialState}) {
             ${this.state
             .map(
                 (post) => `
-                <li class="dataList"data-id="${post.id}">
+                <li class="dataList" data-id="${post.id}">
                 🗒  ${post.title}
                 <button class="addBtn" data-id="${post.id}">
                     +
@@ -59,6 +59,23 @@ function PostList({ $target, initialState}) {
 
     // 최초 한번 시작
     this.render()
+
+    $postList.addEventListener('click', (e) => {
+        const { id } = e.target.dataest
+        const { className } = e.target
+
+        //추가를 눌렀을 경우 onAttach
+        switch(className) {
+            case 'addBtn': 
+                onAttach(id)
+                break;
+            case 'delBtn': 
+                onDelete(id)
+                break;                
+        }
+
+        //삭제를 눌렀을 경우 onDelete
+    })
 }
 
 export default PostList;

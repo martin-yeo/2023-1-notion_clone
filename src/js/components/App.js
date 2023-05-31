@@ -1,3 +1,4 @@
+import { initRouter } from "../utils/Router.js";
 import PostEditPage from "./PostMain/PostEditPage.js";
 import PostPage from "./SideBar/PostPage.js";
 
@@ -31,13 +32,16 @@ function App({ $target }) {
     this.route = () => {
         const {pathname} = window.location
 
+        if (pathname.indexOf('/documents/') === 0) {
+            const [,,postID] = pathname.split('/')
+            postEditPage.render({ postId })
+        } 
         //위치를 파악해서 api연동 던져주기
-
-        console.log(test)
-        postEditPage.render()
         postPage.setState()
     }
     this.route()
+
+    initRouter(() => this.route())
 }
 
 export default App;
