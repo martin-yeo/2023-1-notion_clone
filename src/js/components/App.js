@@ -8,18 +8,36 @@ function App({ $target }) {
     $rendingContainer.className = 'rendingContainer'
     $target.appendChild($listContainer)
     $target.appendChild($rendingContainer)
-  
+
 
     const postPage = new PostPage({
-        $target: $listContainer
+        $target: $listContainer,
+        initialState : {
+            postId: 'new',
+            post: {
+                title: '',
+                content: ''
+            }
+        }
     })
 
     const postEditPage = new PostEditPage({ 
-        $target,
-        initialState: {}
-     })
-     
-     postEditPage.render()
+        $target, $rendingContainer, 
+        initialState: {
+            
+        }
+    })
+
+    this.route = () => {
+        const {pathname} = window.location
+
+        //위치를 파악해서 api연동 던져주기
+
+        console.log(test)
+        postEditPage.render()
+        postPage.setState()
+    }
+    this.route()
 }
 
 export default App;
