@@ -6,6 +6,7 @@ function Editor({
     } 
 }) {
    const $editor = document.createElement("div")
+   $editor.className = 'editorDiv'
    $target.appendChild($editor)
 
    this.state = initialState
@@ -17,9 +18,9 @@ function Editor({
 
    this.render = () => {
         $editor.innerHTML = `
-            <input type="text" name="title" value="${this.state.title}" style="width: 600px"> 
-            <textarea name="content" style="width: 600px; height: 600px;">${this.state.content}</textarea>
-        `
+        <input type="text" name ="title" class="editorTitle" value="${this.state.title}" placeholder="제목 없음"  autofocous/>
+        <textarea name="content" class="editorContent" placeholder="내용을 입력하세요" autofocous>${this.state.content} </textarea>
+    `
    }
 
    this.render()

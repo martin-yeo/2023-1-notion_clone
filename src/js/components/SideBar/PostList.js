@@ -1,9 +1,10 @@
 function PostList({ $target, initialState}) {
     const $postList = document.createElement("div")
-
+    $postList.className = 'postList'
     $target.appendChild($postList)
 
     this.state = initialState
+
     this.setState = (nextState) => {
         this.state = nextState
         //데이터 갱신 될 때 마다 그리기
@@ -12,44 +13,47 @@ function PostList({ $target, initialState}) {
 
 
     this.createTreeView = (data) => {
-        let str = ""
+        let str = ''
 
         for (const key in data) {
-            if(data[key].documents.length) {
-                str += 
-                `
-                <li data-id="${data[key].id}">${data[key].title}
-                    <ul>
-                        ${this.createTreeView(data[key].documents)}
-                    </ul>
-                </li>
-                `
+            if (data[key].documents.length) {
+              str += `<li class="dataList" data-id="${data[key].id}">${data[key].title}
+                        <button class="addBtn" data-id="${data[key].id}">+</button>
+                        <button class="delBtn" data-id="${data[key].id}">x</button>
+                        <ul>${this.createTreeView(data[key].documents)}</ul>
+                      </li>`
             } else {
-                str +=   `<li data-id="${data[key].id}">${data[key].title}`
+              str += `<li class="dataList" data-id="${data[key].id}">
+                        ${data[key].title}
+                       <button class="addBtn" data-id="${data[key].id}">+</button>
+                       <button class="delBtn" data-id="${data[key].id}">X</button>
+                      </li>`
             }
-        }
-        return str
+          }
+      
+          return str
     }
 
     this.render = () => {
         $postList.innerHTML = `
-            <ul>
-                ${this.state
-                    .map(
-                    (data) => 
-                    `
-                    <li data-id="${data.id}">${data.title}</li>
-                    ${ 
-                        data.documents 
-                        ? 
-                        `<ul>${this.createTreeView(data.documents)}</ul>` 
-                        : 
-                        "" 
-                    }
-                    `
-                    ).join("")
-                }
-            </ul>
+        <ul>
+            ${this.state
+            .map(
+                (post) => `
+                <li class="dataList"data-id="${post.id}">
+                🗒  ${post.title}
+                <button class="addBtn" data-id="${post.id}">
+                    +
+                </button>
+                <button class="delBtn" data-id="${post.id}">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+                </li>
+                ${post.documents ? `<ul>${this.createTreeView(post.documents)}</ul>` : ''}
+                `,
+            )
+            .join('')}
+        </ul>
         `
     }
 

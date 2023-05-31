@@ -1,10 +1,11 @@
-import { request } from "../api.js";
+import { request } from "../../utils/api.js";
 import PostList from "./PostList.js";
 
 
 function PostPage({ $target }) {
     const $page = document.createElement("div")
-    
+    $page.className = 'documentDiv'
+
     const TEST_DATA = [
         {
           "id": 1, // Document id
@@ -30,7 +31,7 @@ function PostPage({ $target }) {
         }
       ]
       
-
+    
     const postList = new PostList({ 
         $target,
         initialState: TEST_DATA,
